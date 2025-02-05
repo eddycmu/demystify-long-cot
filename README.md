@@ -1,22 +1,7 @@
 # Demystifying Long Chain-of-Thought Reasoning in LLMs
 
-This repo is contains code used for experiments that systematically examine the
-mechanics of long CoT reasoning. In our paper, we present four main findings:
-
-1. While SFT is not strictly necessary, it simplifies training and improves efficiency.
-2. Reasoning capabilities tend to emerge with increased training compute, but their development is not guaranteed, making reward shaping crucial for stabilizing CoT length growth.
-3. Scaling verifiable reward signals is critical for RL. We find that leveraging noisy, web-extracted solutions with filtering mechanisms shows strong potential, particularly for out-of-distribution (OOD) tasks such as STEM reasoning.
-4. Core abilities like error correction are inherently present in base models, but incentivizing these skills effectively for complex tasks via RL demands significant compute, and measuring their emergence requires a nuanced approach.
-
-In order to run the experiments that resulted in these findings, we implemented the following main changes in our fork of OpenRLHF:
-
-1. Support for rule-based reward functions via the remote reward model code path.
-2. Different rule-based reward functions, including the Cosine Reward that stabilizes and controls CoT length using incentives.
-3. Support for multiple reward types having different discount factors (gamma) for both PPO (via GAE) and Reinforce++.
-4. LLM-as-a-judge as a reference-guided verifier, which can be used as an alternative to rule-based verification.
-It is compatible with the rule-based reward functions mentioned above.
-
-We also included the minhash code we used to search through pre-training data for reasoning patterns characteristic of long CoT.
+This repo contains code used for experiments that systematically examine the
+mechanics of long CoT reasoning. 
 
 
 ## News
@@ -33,16 +18,26 @@ We also included the minhash code we used to search through pre-training data fo
 Large language models have demonstrated remarkable reasoning abilities in domains like mathematics and programming.
 A key technique for enabling reasoning abilities in LLMs is chain-of-thought (CoT) prompting, which guides models to generate intermediate reasoning steps before arriving at a final answer. Despite these advancements, LLMs still struggle with highly complex reasoning tasks, such as mathematical competitions.
 
-Recently, OpenAI’s o1 models have demonstrated significant breakthroughs in these tasks. A key distinguishing feature of these models is their ability to scale up inference compute with long CoTs, which include strategies such as recognizing and correcting mistakes, breaking down difficult steps, and iterating on alternative approaches, leading to substantially longer and more structured reasoning processes.
+Recently, OpenAI’s o1 and DeepSeek R1 models have demonstrated significant breakthroughs in these tasks. A key distinguishing feature of these models is their ability to scale up inference compute with long CoTs, which include strategies such as recognizing and correcting mistakes, breaking down difficult steps, and iterating on alternative approaches, leading to substantially longer and more structured reasoning processes.
 
 Several efforts have attempted to replicate the performance of o1 models by training LLMs to generate long CoTs. 
 However, a comprehensive understanding of how models learn and generate long CoTs remains limited. In this work, we systematically investigate the underlying mechanics of long CoT generation.
+
+In order to run the experiments that resulted in the findings of the paper, we implemented the following main changes in our fork of OpenRLHF:
+
+1. Support for rule-based reward functions via the remote reward model code path.
+2. Different rule-based reward functions, including the Cosine Reward that stabilizes and controls CoT length using incentives.
+3. Support for multiple reward types having different discount factors (gamma) for both PPO (via GAE) and Reinforce++.
+4. LLM-as-a-judge as a reference-guided verifier, which can be used as an alternative to rule-based verification.
+It is compatible with the rule-based reward functions mentioned above.
+
+We also included the  `minhash` code we used to search through pre-training data for reasoning patterns characteristic of long CoT.
 
 ## Quick Start
 
 Firstly, set up your OpenRLHF environment the [usual way](https://github.com/OpenRLHF/OpenRLHF?tab=readme-ov-file#quick-start) as instructed below (from the OpenRLHF docs). Use our [dependency installation script](openrlhf/scripts/install_deps.sh) to install additional dependencies, but depending on your environment, some details may vary.
 
-Secondly, you can consider using one of our experiment [run scripts](openrlhf/scripts) as a starting point for your own exploration. Note that file paths and api keys were removed with search-and-replace, so minor fixes might be required before the scripts are runnable.
+Secondly, you can consider using one of our experiments [run scripts](openrlhf/scripts) as a starting point for your own exploration. Note that file paths and api keys were removed with search-and-replace, so minor fixes might be required before the scripts are runnable.
 
 ### Installation
 
