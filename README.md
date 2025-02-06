@@ -1,12 +1,11 @@
 # Demystifying Long Chain-of-Thought Reasoning in LLMs
 
-This repo contains code used for experiments that systematically examine the
-mechanics of long CoT reasoning. 
+This repo contains code used for experiments in the paper ["Demystifying Long Chain-of-Thought Reasoning in LLMs"](https://arxiv.org/abs/2502.03373). 
 
 
 ## News
 
-- [2025/02/06] We released the paper and the codebase.
+- [2025/02/06] We released [the paper](https://arxiv.org/abs/2502.03373) and [the codebase](https://github.com/eddycmu/demystify-long-cot).
 
 ## TODOs
 
@@ -80,3 +79,19 @@ pip install -e .
 ## Acknowledgements
 
 We would like to thank those who have contributed to the following projects, upon which we have built our research: OpenRLHF, vLLM, DeepSpeed, Llama, Qwen, DeepSeek R1, Kimi-k1.5 and o1. We are also grateful to many others who have helped but are not mentioned here.
+
+## Citation
+
+If you find our work helpful, please kindly cite us as:
+
+```bibtex
+@misc{yeotong2025longcot,
+      title={Demystifying Long Chain-of-Thought Reasoning in LLMs}, 
+      author={Edward Yeo and Yuxuan Tong and Morry Niu and Graham Neubig and Xiang Yue},
+      year={2025},
+      eprint={2502.03373},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2502.03373}, 
+}
+```
