@@ -4,7 +4,7 @@ This repo contains code used for experiments in the paper ["Demystifying Long Ch
 
 
 ## News
-
+- [2025/04] We released all of our datasets and model checkpoints on [huggingface](https://huggingface.co/demystify-long-cot)
 - [2025/02/06] We released [the paper](https://arxiv.org/abs/2502.03373) and [the codebase](https://github.com/eddycmu/demystify-long-cot).
 
 ## TODOs
